@@ -1,4 +1,4 @@
-import scene2 from "./scene2";
+import scene2 from "./menu";
 
 class scene3 extends Phaser.Scene{
     constructor (){

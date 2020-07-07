@@ -1,5 +1,5 @@
-import scene1 from './scene1'
-import scene2 from './scene2'
+import loadScene from './loadScene'
+import menu from './menu'
 import scene3 from './scene3'
 
 const config = ()=>{
@@ -13,7 +13,7 @@ const config = ()=>{
                 gravity: { y: 200 }
             }
         },
-        scene: [scene1,scene2,scene3]
+        scene: [loadScene,menu,scene3]
     };
     
     var game = new Phaser.Game(config);
