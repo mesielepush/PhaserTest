@@ -12,6 +12,15 @@ class loadScene extends Phaser.Scene {
             frameWidth:32,
             frameHeight:32
         });
+
+        this.load.spritesheet('anna', "../src/images/sprites/anna.png",{
+            frameHeight:64,
+            frameWidth:64
+        })
+        this.load.atlas('characters',"../src/images/sprites/characters.png","../src/images/sprites/characters.json")
+        this.load.atlas('daze',"../src/images/sprites/daze.png","../src/images/sprites/daze.json")
+
+
         this.load.audio('title_music','../src/mp3/song.mp3');
         let loadingBar = this.add.graphics({
             fillStyle:{

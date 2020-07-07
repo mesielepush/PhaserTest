@@ -42,11 +42,13 @@ class menu extends Phaser.Scene{
             hoverSprite.y = playButton.y
         });
         playButton.on('pointerout', ()=>{
-            hoverSprite.setVisible(false)
+            hoverSprite.setVisible(false);
+
 
         });
         playButton.on('pointerup', ()=>{
-            console.log('OPEN SESAME')
+            console.log('OPEN SESAME');
+            this.scene.start(constants.scenes.play)
         });
 
         options_button.setInteractive();

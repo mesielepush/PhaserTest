@@ -2,7 +2,7 @@ const constants = {
     scenes: {
         load: "loadScene",
         menu: "menu",
-        play: "PLAY"
+        play: "play"
     },
     image: {
         logo: "logo",
