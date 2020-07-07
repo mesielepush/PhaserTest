@@ -3,7 +3,7 @@ class scene1 extends Phaser.Scene {
         super({key:"scene1"});
     }
     preload(){
-        this.load.image('background1','../src/images/star.jpg');
+        this.load.image('background1','../src/images/star.png');
     }
     create(){
         this.image = this.add.image(400,300,'background1');
@@ -14,6 +14,10 @@ class scene1 extends Phaser.Scene {
         this.input.on('pointerdown', function(event){
             this.image.x = event.x;
             this.image.y = event.y;
+        },this)
+        this.input.keyboard.on('keyup_P',function(event){
+            var physicsImage = this.physics.add.image(this.image.x,this.image.y,'background1');
+            physicsImage.setVelocity(Phaser.Math.RND.integerInRange(-100,100),-300);
         },this)
     }
     update(delta) {
