@@ -1,3 +1,4 @@
+import scene1 from './scene1'
 const config = ()=>{
     var config = {
         type: Phaser.AUTO,
@@ -9,21 +10,20 @@ const config = ()=>{
                 gravity: { y: 200 }
             }
         },
-        scene: {
-            preload: preload,
-            create: create
-        }
+        scene: [scene1]
     };
     
     var game = new Phaser.Game(config);
     
-    function preload ()
+    /* function preload ()
     {
         this.load.setBaseURL('http://labs.phaser.io');
     
-        this.load.image('sky', 'assets/skies/space3.png');
+        this.load.image('sky', 'assets/skies/nebula.jpg');
         this.load.image('logo', 'assets/sprites/phaser3-logo.png');
-        this.load.image('red', 'assets/particles/red.png');
+        this.load.image('red', 'assets/particles/muzzleflash4.png');
+
+        
     }
     
     function create ()
@@ -33,7 +33,7 @@ const config = ()=>{
         var particles = this.add.particles('red');
     
         var emitter = particles.createEmitter({
-            speed: 100,
+            speed: 50,
             scale: { start: 1, end: 0 },
             blendMode: 'ADD'
         });
@@ -45,7 +45,7 @@ const config = ()=>{
         logo.setCollideWorldBounds(true);
     
         emitter.startFollow(logo);
-    }
+    } */
     
 };
 
