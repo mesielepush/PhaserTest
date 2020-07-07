@@ -4,11 +4,11 @@ const constants = {
         menu: "menu",
         play: "PLAY"
     },
-    IMAGE: {
-        LOGO: "logo.png",
-        OPTIONS: "options_button.png",
-        PLAY: "play_button.png",
-        TITLE: "title_bg.jpg"
+    image: {
+        logo: "logo",
+        options: "options_button",
+        play: "play_button",
+        title: "title_bg."
     },
     AUDIO: {
         TITLE: "shuinvy-childhood.mp3"

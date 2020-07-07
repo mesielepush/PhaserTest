@@ -13,7 +13,10 @@ const config = ()=>{
                 gravity: { y: 200 }
             }
         },
-        scene: [loadScene,menu,scene3]
+        scene: [loadScene,menu,scene3],
+        render:{
+            pixelArt:true
+        }
     };
     
     var game = new Phaser.Game(config);
