@@ -19,6 +19,17 @@ class scene1 extends Phaser.Scene {
             var physicsImage = this.physics.add.image(this.image.x,this.image.y,'background1');
             physicsImage.setVelocity(Phaser.Math.RND.integerInRange(-100,100),-300);
         },this)
+        this.input.keyboard.on('keyup', function(e){
+            if (e.key == "2"){
+                this.scene.start("scene2");
+            }
+            if (e.key == "3"){
+                this.scene.start("scene3");
+            }
+        },this)
+        
+            
+       
     }
     update(delta) {
         if (this.key_A.isDown){
