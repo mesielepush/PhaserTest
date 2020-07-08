@@ -67,24 +67,48 @@ class play extends Phaser.Scene{
     }
     create(){
         
-        this.anna = this.add.sprite(400,400,"anna",26).setScale(2); 
-        this.hooded = this.add.sprite(200,200, "hooded",26).setScale(2);
+        this.anna = this.physics.add.sprite(400,400,"anna",26).setScale(2); 
+        this.hooded = this.physics.add.sprite(200,200, "hooded",26).setScale(2).setImmovable(true);
         window.hooded = this.hooded;
         window.anna = this.anna;
 
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
     }
     update(time,delta){
-        if (this.keyboard.D.isDown === true){
-            console.log(this.anna.x);
-            this.anna.play("right",true);
-            this.anna.x = this.anna.x +64*(delta/1000);
+        this.physics.world.collide(this.anna,this.hooded, () =>{
+            this.anna.destroy();
+            this.hooded.destroy()
+        })
+        if(this.anna.active === true){
+            if (this.keyboard.D.isDown === true){
+            
+                this.anna.play("right",true);
+                this.anna.setVelocityX(64)
+            }
+            if (this.keyboard.A.isDown === true){
+                
+                this.anna.anims.playReverse("left",true);
+                this.anna.setVelocityX(-64)
+            }
+            if(this.keyboard.A.isUp && this.keyboard.D.isUp){
+                this.anna.setVelocityX(0)
+            }
+    
+            if (this.keyboard.W.isDown === true){
+                
+                this.anna.play("up",true);
+                this.anna.setVelocityY(-64)
+            }
+            if (this.keyboard.S.isDown === true){
+                
+                this.anna.anims.playReverse("down",true);
+                this.anna.setVelocityY(64)
+            }
+            if(this.keyboard.S.isUp && this.keyboard.W.isUp){
+                this.anna.setVelocityY(0)
+            }
         }
-        if (this.keyboard.A.isDown === true){
-            console.log(this.anna.x);
-            this.anna.anims.playReverse("left",true);
-            this.anna.x = this.anna.x -64*(delta/1000);
-        }
+        
     }
 }
 export default play
