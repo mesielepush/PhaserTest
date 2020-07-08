@@ -19,9 +19,9 @@ class menu extends Phaser.Scene{
         hoverSprite.setVisible(false);
 
         this.sound.pauseOnBlur = true;
-        this.sound.play('title_music',{
+        /* this.sound.play('title_music',{
             loop: true
-        })
+        }) */
 
         this.anims.create({
             key:'walk',

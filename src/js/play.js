@@ -7,15 +7,47 @@ class play extends Phaser.Scene{
     }
     preload(){
         this.anims.create({
-            key: "dazzle",
-            frameRate: 20,
-            frames: this.anims.generateFrameNames("daze",{
-                prefix: "daze0",
-                suffix: ".png",
+            key: "left",
+            frameRate: 10,
+            frames: this.anims.generateFrameNumbers("anna", {
+                start: 9,
+                end: 17
+            })
+        });
+        this.anims.create({
+            key: "down",
+            frameRate: 10,
+            frames: this.anims.generateFrameNumbers("anna", {
+                start: 18,
+                end: 26
+            })
+        });
+        this.anims.create({
+            key: "up",
+            frameRate: 10,
+            frames: this.anims.generateFrameNumbers("anna", {
                 start: 0,
-                end:41,
+                end: 8
+            })
+        });
+        this.anims.create({
+            key: "right",
+            frameRate: 10,
+            frames: this.anims.generateFrameNumbers("anna", {
+                start: 27,
+                end: 35
+            })
+        });
+        this.anims.create({
+            key: "blaze",
+            duration: 50,
+            frames: this.anims.generateFrameNames("daze", {
+                prefix: "fire0",
+                suffix: ".png",
+                end: 55
             }),
-            repeat: -1
+            showOnStart: true,
+            hideOnComplete: true
         });
         this.textures.addSpriteSheetFromAtlas("hooded",{
             frameWidth:64,
@@ -30,39 +62,29 @@ class play extends Phaser.Scene{
             frame:"mandy"
         });
 
-        this.anims.create({
-            key: "right",
-            frameRate: 10,
-            frames: this.anims.generateFrameNumbers("hooded", {
-                frames: [143,144,145,146,147,148,149,150,151]
-            })
-        });
-        this.anims.create({
-            key: "left",
-            frameRate: 10,
-            frames: this.anims.generateFrameNumbers("anna", {
-                start:9,
-                end:17
-            })
-        });
+        
 
     }
     create(){
-        let pimple = this.add.sprite(100,100,'daze','daze015.png');
-        pimple.play("dazzle");
-        let anna = this.add.sprite(400,400,"anna").setScale(2).anims.playReverse('left'); 
-        let hooded = this.add.sprite(200,200, "hooded").setScale(2).play('right');
-        window.hooded = hooded;
-        window.anna = anna;
-        window.pimple = pimple;
+        
+        this.anna = this.add.sprite(400,400,"anna",26).setScale(2); 
+        this.hooded = this.add.sprite(200,200, "hooded",26).setScale(2);
+        window.hooded = this.hooded;
+        window.anna = this.anna;
 
-        pimple.on("animationupdate", ()=>{
-            console.log('ahhhhh')
-        });
-        pimple.on("animationrepeat", ()=>{
-            console.log('LEVELUP')
-        });
-
+        this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
+    }
+    update(time,delta){
+        if (this.keyboard.D.isDown === true){
+            console.log(this.anna.x);
+            this.anna.play("right",true);
+            this.anna.x = this.anna.x +64*(delta/1000);
+        }
+        if (this.keyboard.A.isDown === true){
+            console.log(this.anna.x);
+            this.anna.anims.playReverse("left",true);
+            this.anna.x = this.anna.x -64*(delta/1000);
+        }
     }
 }
 export default play

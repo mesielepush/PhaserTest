@@ -8,11 +8,12 @@ const config = ()=>{
         width: 800,
         height: 600,
         physics: {
-            default: 'arcade',
+            default: "arcade",
             arcade: {
-                gravity: { y: 200 }
+                debug: true
             }
         },
+        
         scene: [loadScene,menu,play],
         render:{
             pixelArt:true
