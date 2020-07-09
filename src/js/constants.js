@@ -8,7 +8,7 @@ const constants = {
         logo: "logo",
         options: "options_button",
         play: "play_button",
-        title: "title_bg."
+        title: "title_bg"
     },
     AUDIO: {
         TITLE: "shuinvy-childhood.mp3"
