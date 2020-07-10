@@ -76,10 +76,13 @@ class play extends Phaser.Scene{
         window.hooded = this.hooded;
         window.anna = this.anna;
 
+
+        this.anna.setSize(40,50).setOffset(10,10);
+        this.anna.setCollideWorldBounds(true);
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
         this.input.on("pointermove", (pointer) => {
             if (pointer.isDown) { //is clicking
-                let fire = this.add.sprite(pointer.worldX, pointer.worldY, "daze", "fire00.png").play("blaze");
+                let fire = this.add.sprite(pointer.worldX, pointer.worldY, "daze", "fire00.png").play("blaze").setSize(30,70);
                 this.fireAttacks.add(fire);
                 fire.on("animationcomplete", () => {
                     fire.destroy();
@@ -123,31 +126,40 @@ class play extends Phaser.Scene{
         
         
         
-        if(this.anna.active === true){
-            
-            if (this.keyboard.D.isDown === true){
-                this.anna.play("right",true);
-                this.anna.setVelocityX(64)
+            if (this.anna.active === true) {
+                if (this.keyboard.D.isDown === true) {
+                    this.anna.setVelocityX(constants.anna.speed);
+    
+                }
+    
+                if (this.keyboard.W.isDown === true) {
+                    this.anna.setVelocityY(-constants.anna.speed);
+                }
+    
+                if (this.keyboard.S.isDown === true) {
+                    this.anna.setVelocityY(constants.anna.speed);
+                }
+    
+                if (this.keyboard.A.isDown === true) {
+                    this.anna.setVelocityX(-constants.anna.speed);
+                }
+                if (this.keyboard.A.isUp && this.keyboard.D.isUp) { //not moving on X axis
+                    this.anna.setVelocityX(0);
+                }
+                if (this.keyboard.W.isUp && this.keyboard.S.isUp) { //not pressing y movement
+                    this.anna.setVelocityY(0);
+                }
+    
+                if (this.anna.body.velocity.x > 0) { //moving right
+                    this.anna.play("right", true);
+                } else if (this.anna.body.velocity.x < 0) { //moving left
+                    this.anna.anims.playReverse("left", true);
+                } else if (this.anna.body.velocity.y < 0) { //moving up
+                    this.anna.play("up", true);
+                } else if (this.anna.body.velocity.y > 0) { //moving down
+                    this.anna.play("down", true);
+                }
             }
-            if (this.keyboard.A.isDown === true){
-                this.anna.anims.playReverse("left",true);
-                this.anna.setVelocityX(-64)
-            }
-            if(this.keyboard.A.isUp && this.keyboard.D.isUp){
-                this.anna.setVelocityX(0)
-            }
-            if (this.keyboard.W.isDown === true){
-                this.anna.play("up",true);
-                this.anna.setVelocityY(-64)
-            }
-            if (this.keyboard.S.isDown === true){
-                this.anna.anims.playReverse("down",true);
-                this.anna.setVelocityY(64)
-            }
-            if(this.keyboard.S.isUp && this.keyboard.W.isUp){
-                this.anna.setVelocityY(0)
-            }
-        }
         
     }
 }

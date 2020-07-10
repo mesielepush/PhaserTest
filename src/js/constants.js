@@ -10,11 +10,14 @@ const constants = {
         play: "play_button",
         title: "title_bg"
     },
-    AUDIO: {
-        TITLE: "shuinvy-childhood.mp3"
+    audio: {
+        title: "shuinvy-childhood.mp3"
     },
-    SPRITE: {
-        CAT: "cat.png"
+    sprite: {
+        cat: "cat.png"
+    },
+    anna:{
+        speed: 128
     }
 }
 export default constants
